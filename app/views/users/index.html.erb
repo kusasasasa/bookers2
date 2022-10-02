@@ -18,6 +18,13 @@
             </tr>
           </tbody>
         </table>
+        <% if @user == current_user%>
+
+
+          <%= link_to @user.name, edit_user_path(@user.id) %>
+        <%else%>
+          <%= link_to @user.name, user_path(current_user.id) %>
+        <% end %>
 
 
 
@@ -48,6 +55,8 @@
         <tr>
           <th>name</th>
           <th><%= user.name%></th>
+          <th><%= link_to "show", user_path(user.id) %></th>
+          
 
 
           <th></th>
