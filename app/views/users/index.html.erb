@@ -1,7 +1,9 @@
 <main>
+    <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
+        
         <h2>User info</h2>
 
         <table class="table">
@@ -18,59 +20,49 @@
             </tr>
           </tbody>
         </table>
-        <% if @user == current_user%>
-
-
-          <%= link_to @user.name, edit_user_path(@user.id) %>
-        <%else%>
-          <%= link_to @user.name, user_path(current_user.id) %>
-        <% end %>
-
-
-
         <div class="row">
-
-
-
-
+      
+          <% if @user == current_user%>
+  
+  
+            <%= link_to current_user.name, edit_user_path(current_user.id) %>
+          <%else%>
+            <%= link_to @user.name, user_path(current_user.id) %>
+          <% end %>
         </div>
-        <h2>New book</h2>
-        <%= form_with model: Book.new do |f| %>
 
-
-          <h4>タイトル</h4>
-            <%= f.text_field :title %>
-
-            <h4>本文</h4>
-            <%= f.text_area :body %>
-
-            <%= f.submit '投稿' %>
-        <% end %>
-
-
-      <h2>Users</h2>
-
-      <table>
-      <% @users.each do |user| %>
-        <tr>
-          <th>name</th>
-          <th><%= user.name%></th>
-          <th><%= link_to "show", user_path(user.id) %></th>
-          
-
-
-          <th></th>
-        </tr>
-
-        <tr>
-
-
-        </tr>
-      <% end %>
-      </table>
-
+        <%= render 'books/list' %>
       </div>
+  
+    
+
+
+
+
+
+    <div class="col-lg-8 offset-md-1">
+        <h2>Users</h2>
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <th><%= image_tag user.get_profile_image(100,100) %></th>
+                <th><%= user.name%></th>
+                <th><%= link_to "show", user_path(user.id) %></th>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
     </div>
+
+    
   </div>
 </main>
