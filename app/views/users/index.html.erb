@@ -3,12 +3,16 @@
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
-        
+
         <h2>User info</h2>
 
         <table class="table">
 
           <tbody>
+            <tr>
+               <th><%= image_tag current_user.get_profile_image(100,100) %></th>
+            </tr>
+            </tr>
             <tr>
           	  <th>name</th>
           	  <th><%=current_user.name%></th>
@@ -21,20 +25,25 @@
           </tbody>
         </table>
         <div class="row">
-      
-          <% if @user == current_user%>
-  
-  
-            <%= link_to current_user.name, edit_user_path(current_user.id) %>
+
+          <% if @user == current_user.id%>
+
+            <%= link_to edit_user_path(current_user.id) do%>
+              <%= image_tag "sample-author1.jpg" %>
+            <%end%>
+
           <%else%>
-            <%= link_to @user.name, user_path(current_user.id) %>
+            <%= link_to user_path(current_user.id) do%>
+              <%= image_tag "no_image.jpg" %>
+            <%end%>
+
           <% end %>
         </div>
 
         <%= render 'books/list' %>
       </div>
-  
-    
+
+
 
 
 
@@ -42,7 +51,7 @@
 
     <div class="col-lg-8 offset-md-1">
         <h2>Users</h2>
-        
+
         <table class="table">
           <thead>
             <tr>
@@ -63,6 +72,6 @@
 
     </div>
 
-    
+
   </div>
 </main>

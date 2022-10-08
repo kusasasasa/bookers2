@@ -8,7 +8,7 @@
         <table class="table">
           <tbody>
             <tr>
-              <th><%= image_tag @book.get_image %></th>
+              <th><%= image_tag current_user.get_profile_image(100,100)%></th>
             </tr>
             <tr>
           	  <th>name</th>
@@ -20,8 +20,11 @@
             </tr>
           </tbody>
         </table>
-        <div>
-          <%= link_to current_user.name, edit_user_path(current_user.id) %>
+        <div class="row">
+        
+          <%= link_to edit_user_path(current_user.id) do%>
+            <%= image_tag "sample-author1.jpg" %>
+          <%end%>
 
         </div>
         <%= render 'books/list' %>
