@@ -1,15 +1,21 @@
 <main>
     <p id="notice"></p>
+    
   <div class="container px-5 px-sm-0">
+    <% if @book.errors.any? %>
+            <%= @book.errors.count %>errors prohibited this obj from being saved:
+            <ul>
+              <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+    <% end %>
     <div class="row">
       <div class="col-md-3">
         <h2>User info</h2>
-
+        <%= image_tag current_user.get_profile_image(100,100)%>
         <table class="table">
           <tbody>
-            <tr>
-              <th><%= image_tag current_user.get_profile_image(100,100)%></th>
-            </tr>
             <tr>
           	  <th>name</th>
           	  <th><%=  current_user.name%></th>
@@ -48,7 +54,7 @@
           <tr>
             <th></th>
             <th>Title</th>
-            <th>Body</th>
+            <th>Opinion</th>
           </tr>
         </thead>
         <tbody>
