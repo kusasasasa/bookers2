@@ -47,8 +47,12 @@
 
             <tr>
                 <a>
-                  <td><%= image_tag @book.user.get_profile_image(100,100)%><br>
-                  <%= link_to @book.user.name, user_path(@book.user.id) %></td>
+                 <td><%=link_to user_path(@book.user.id) do%>
+                    <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                    <%= link_to @book.user.name, user_path(@book.user.id) %></td>
+                  
+                <%end%>
+                  
                 </a>
                   <td><%=link_to @book.title, book_path(@book.id)%></td>
                   <td><%= @book.body%></td>
@@ -59,8 +63,10 @@
                     <td>
 
                     </td>
-                    <%= link_to "edit", edit_book_path(@book.id),class:"btn btn-sm btn-success " %>
-                    <%= link_to "destroy",book_path(@book.id), method: :delete,data: {confirm: "削除しますか？"} ,class:"btn btn-sm btn-danger "%>
+
+
+                    <td><%= link_to "Edit", edit_book_path(@book.id),class:"btn btn-sm btn-success " %></td>
+                    <td><%= link_to "Destroy",book_path(@book.id), method: :delete,data: {confirm: "削除しますか？"} ,class:"btn btn-sm btn-danger "%></td>
                   <%end%>
 
 

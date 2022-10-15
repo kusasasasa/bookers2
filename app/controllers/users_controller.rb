@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
   def show
     @user=User.find(params[:id])
-    @books = @user.books 
+    @books = @user.books
   end
   def create
     @user= User.new(user_params)
@@ -23,18 +23,18 @@ class UsersController < ApplicationController
       flash[:notice] = "You have updated user successfully."
       redirect_to user_path(current_user.id)
     else
-       render :new
+       render :edit
     end
-      
+
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
   def top
-  
+
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:name, :image, :introduction)

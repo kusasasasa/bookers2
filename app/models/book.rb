@@ -1,12 +1,13 @@
 class Book < ApplicationRecord
-  has_one_attached :image
-  validates :title, presence: true,
-    length: { minimum: 1 }
-  validates :body, presence:{ minimum: 1, maximum: 200 }
-   
+  has_one_attached :profile_image
   belongs_to :user
- 
-  
+  validates :title, presence: true
+  validates :body, presence: true, length: {maximum: 200}
+
+
+
+
+
   def get_image(width,heigth)
     if image.attached?
       image
