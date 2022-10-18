@@ -21,7 +21,7 @@
             </tr>
           </tbody>
         </table>
-
+        <div class="row">
 
           <% if @user == current_user.id%>
 
@@ -37,7 +37,8 @@
 
           <% end %>
           <%= render 'books/list' %>
-
+        </div>
+      </div>
 
       <div class="col-md-8 offset-md-1">
         <h2>Users</h2>

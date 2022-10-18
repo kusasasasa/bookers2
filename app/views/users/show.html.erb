@@ -10,36 +10,36 @@
 
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
-        <h2>User info</h2>
-        <%= image_tag @user.get_profile_image(100,100) %>
-        <table class="table">
-          <tbody>
+      <div class="col-md-3">
+          <h2>User info</h2>
+          <%= image_tag @user.get_profile_image(100,100) %>
+          <table class="table">
+            <tbody>
 
-            <tr>
-          	  <th>name</th>
-          	  <th><%=@user.name%></th>
-            </tr>
-            <tr>
-          	  <th>introduction</th>
-          	  <th><%=@user.introduction%></th>
-            </tr>
-          </tbody>
-        </table>
+              <tr>
+            	  <th>name</th>
+            	  <th><%=@user.name%></th>
+              </tr>
+              <tr>
+            	  <th>introduction</th>
+            	  <th><%=@user.introduction%></th>
+              </tr>
+            </tbody>
+          </table>
 
-          <% if @user.id == current_user.id%>
-            <a class="btn btn-outline-secondary btn-block edit_user_52453" href=<%=edit_user_path(current_user.id)%>>
+            <% if @user.id == current_user.id%>
+              <a class="btn btn-outline-secondary btn-block edit_user_52453" href=<%=edit_user_path(current_user.id)%>>
+                  <i class="fas fa-user-cog"></i>
+              </a>
+
+            <%else%>
+              <a class="btn btn-outline-secondary btn-block edit_user_52453" href=<%=edit_user_path(@user.id)%>>
                 <i class="fas fa-user-cog"></i>
-            </a>
+              </a>
 
-          <%else%>
-            <a class="btn btn-outline-secondary btn-block edit_user_52453" href=<%=edit_user_path(@user.id)%>>
-              <i class="fas fa-user-cog"></i> 
-            </a>
-
-          <% end %>
-          <%= render 'books/list' %>
-
+            <% end %>
+            <%= render 'books/list' %>
+      </div>
 
 
       <div class="col-md-8 offset-md-1">
@@ -75,7 +75,7 @@
 
         </table>
       </div>
-    </div>
+
 
   </div>
 </div>
